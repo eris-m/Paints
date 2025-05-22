@@ -1,4 +1,4 @@
-﻿namespace paints.ViewModels;
+﻿namespace Paints.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {

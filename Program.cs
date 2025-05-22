@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using System;
 
-namespace paints;
+namespace Paints;
 
 sealed class Program
 {
