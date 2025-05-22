@@ -7,7 +7,7 @@
              x:Class="Paints.Controls.PaintControl"
              x:DataType="vm:PaintViewModel">
   <StackPanel>
-    <Rectangle Width="100" Height="100" Fill="{Binding Colour}" />
+    <Rectangle Width="100" Height="100" Fill="{Binding Colour, Converter={x:Static vm:PaintViewModel.ColourConverter}}" />
     <Label Content="{Binding Name}" />
   </StackPanel>
 </UserControl>
