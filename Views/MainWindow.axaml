@@ -16,4 +16,11 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
     
+    <ItemsControl ItemsSource="{Binding Paints}">
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <UniformGrid></UniformGrid>
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+    </ItemsControl>
 </Window>
