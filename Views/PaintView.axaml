@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:Paints.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Paints.Controls.PaintControl"
+             x:Class="Paints.Views.PaintView"
              x:DataType="vm:PaintViewModel">
   <StackPanel>
     <Rectangle Width="100" Height="100" Fill="{Binding Colour, Converter={x:Static vm:PaintViewModel.ColourConverter}}" />

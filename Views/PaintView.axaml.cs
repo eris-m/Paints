@@ -2,11 +2,11 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace Paints.Controls;
+namespace Paints.Views;
 
-public partial class PaintControl : UserControl
+public partial class PaintView : UserControl
 {
-    public PaintControl()
+    public PaintView()
     {
         InitializeComponent();
     }
