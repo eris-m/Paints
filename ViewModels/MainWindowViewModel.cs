@@ -13,5 +13,8 @@ public partial class MainWindowViewModel : ViewModelBase
         new Paint("Silly Salamander", "Eris", Colors.LightPink)
     ];
 
+    public VersionAViewModel VersionAViewModel => new VersionAViewModel(_paints);
+    public VersionBViewModel VersionBViewModel => new VersionBViewModel(_paints);
+    
     public IEnumerable<PaintViewModel> Paints => _paints.Select(p => new PaintViewModel(p));
 }
