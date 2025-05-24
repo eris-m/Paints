@@ -12,6 +12,12 @@
             <Setter Property="Height" Value="100" />
             <Setter Property="HorizontalAlignment" Value="Center" />
         </Style>
+        
+        <Style Selector="Label.Brand">
+            <Setter Property="FontSize" Value="10" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+        
         <Style Selector="Label.Centre">
             <Setter Property="HorizontalAlignment" Value="Center" />
         </Style>
