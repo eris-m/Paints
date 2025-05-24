@@ -6,8 +6,22 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Paints.Views.PaintView"
              x:DataType="vm:PaintViewModel">
-  <StackPanel>
-    <Rectangle Width="100" Height="100" Fill="{Binding Colour, Converter={x:Static vm:PaintViewModel.ColourConverter}}" />
-    <Label Content="{Binding Name}" />
-  </StackPanel>
+    <UserControl.Styles>
+        <Style Selector="Rectangle.Colour">
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="100" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+        <Style Selector="Label.Centre">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+    </UserControl.Styles>
+    <Border>
+        <StackPanel>
+            <Rectangle Classes="Colour"
+                       Fill="{Binding Colour, Converter={x:Static vm:PaintViewModel.ColourConverter}}" />
+            <Label Classes="Centre Brand" Content="{Binding Brand}" />
+            <Label Classes="Centre Name" Content="{Binding Name}" />
+      </StackPanel>
+    </Border>
 </UserControl>

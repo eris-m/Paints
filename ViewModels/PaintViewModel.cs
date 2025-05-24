@@ -22,6 +22,12 @@ public class PaintViewModel(Paint paint) : ViewModelBase
         set => SetProperty(_paint.Name, value, _paint, (m, v) => m.Name = v);
     }
 
+    public string Brand
+    {
+        get => _paint.Brand;
+        set => SetProperty(_paint.Brand, value, _paint, (p, s) => p.Brand = s);
+    }
+
     public Color Colour
     {
         get => _paint.Colour;
