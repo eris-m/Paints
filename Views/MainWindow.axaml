@@ -19,7 +19,7 @@
     <ItemsControl ItemsSource="{Binding Paints}">
         <ItemsControl.ItemsPanel>
             <ItemsPanelTemplate>
-                <UniformGrid></UniformGrid>
+                <UniformGrid Columns="3"></UniformGrid>
             </ItemsPanelTemplate>
         </ItemsControl.ItemsPanel>
     </ItemsControl>
