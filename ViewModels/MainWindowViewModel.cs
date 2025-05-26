@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Avalonia.Media;
+using CommunityToolkit.Mvvm.Input;
 using Paints.Models;
 
 namespace Paints.ViewModels;
@@ -14,5 +16,21 @@ public partial class MainWindowViewModel : ViewModelBase
         new Paint("Goose Gray", "Eris", Colors.Gray)
     ];
 
-    public IEnumerable<PaintViewModel> Paints => _paints.Select(p => new PaintViewModel(p));
+    public IEnumerable<PaintViewModel> Paints => _paints.Select(PaintViewModelFactory);
+    
+    private void SelectPaint(PaintViewModel paint)
+    {
+        Console.WriteLine(paint.Name + " selected!");
+    }
+
+    private PaintViewModel PaintViewModelFactory(Paint paint)
+    {
+        var viewModel = new PaintViewModel(paint);
+        viewModel.SelectCommand = new RelayCommand(() =>
+        {
+             SelectPaint(viewModel);
+        });
+
+        return viewModel;
+    }
 }

@@ -23,7 +23,8 @@
             <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
     </UserControl.Styles>
-    <Border>
+    <Button Command="{Binding SelectCommand}"
+            CommandParameter="{Binding }">
         <StackPanel Orientation="Horizontal">
             <cc:PaintRectangle Colour="{Binding Colour}" />
             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
@@ -31,5 +32,5 @@
                 <Label Classes="Centre Name" Content="{Binding Name}" />
             </StackPanel>
       </StackPanel>
-    </Border>
+    </Button>
 </UserControl>
