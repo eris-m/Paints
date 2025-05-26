@@ -4,10 +4,11 @@ using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using System.Linq;
 using Avalonia.Markup.Xaml;
-using paints.ViewModels;
-using paints.Views;
+using Microsoft.Extensions.DependencyInjection;
+using Paints.ViewModels;
+using Paints.Views;
 
-namespace paints;
+namespace Paints;
 
 public partial class App : Application
 {

@@ -1,9 +1,9 @@
 using System;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using paints.ViewModels;
+using Paints.ViewModels;
 
-namespace paints;
+namespace Paints;
 
 public class ViewLocator : IDataTemplate
 {

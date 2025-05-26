@@ -1,0 +1,19 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:Paints.ViewModels"
+             xmlns:cc="clr-namespace:Paints.Views"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Paints.Views.InfoPageView"
+             x:DataType="vm:InfoPageViewModel">
+    <DockPanel>
+        <Button DockPanel.Dock="Top" Command="{Binding ToListCommand}">Back!</Button>
+        <StackPanel>
+            <cc:PaintRectangle HorizontalAlignment="Left" Colour="{Binding Paint.Colour}"/>
+            <TextBlock>Name: <Label Content="{Binding Paint.Name}"/></TextBlock>
+            <TextBlock>Brand: <Label Content="{Binding Paint.Brand}"/></TextBlock>
+        </StackPanel>
+    </DockPanel>
+    
+</UserControl>

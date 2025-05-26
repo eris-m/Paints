@@ -1,0 +1,30 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Paints.Views">
+    <Design.PreviewWith>
+        <controls:PaintRectangle />
+    </Design.PreviewWith>
+
+    <Style Selector="controls|PaintRectangle">
+        <!-- Set Defaults -->
+        <Setter Property="BorderBrush" Value="White" /> <!-- TODO: Dynamic brush colour. -->
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <!-- <Border  -->
+                <!--     Width="{TemplateBinding BorderSize}" -->
+                <!--     Height="{TemplateBinding BorderSize}" -->
+                <!--     BorderBrush="{TemplateBinding BorderBrush}"  -->
+                <!--     BorderThickness="{TemplateBinding BorderThickness}"> -->
+                    <Rectangle 
+                        Width="{TemplateBinding Size}" 
+                        Height="{TemplateBinding Size}"
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                        Fill="{TemplateBinding Colour, 
+                            Converter={x:Static controls:PaintRectangle.ColourConverter}}" />
+                <!-- </Border> -->
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>
