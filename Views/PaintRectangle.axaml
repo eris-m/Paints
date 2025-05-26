@@ -19,7 +19,8 @@
                     <Rectangle 
                         Width="{TemplateBinding Size}" 
                         Height="{TemplateBinding Size}"
-                        
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}"
                         Fill="{TemplateBinding Colour, 
                             Converter={x:Static controls:PaintRectangle.ColourConverter}}" />
                 <!-- </Border> -->

@@ -8,10 +8,9 @@
              x:Class="Paints.Views.PaintView"
              x:DataType="vm:PaintViewModel">
     <UserControl.Styles>
-        <Style Selector="Rectangle.Colour">
-            <Setter Property="Width" Value="100" />
-            <Setter Property="Height" Value="100" />
+        <Style Selector="cc|PaintRectangle">
             <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
         
         <Style Selector="Label.Brand">
@@ -21,13 +20,16 @@
         
         <Style Selector="Label.Centre">
             <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
     </UserControl.Styles>
     <Border>
-        <StackPanel>
+        <StackPanel Orientation="Horizontal">
             <cc:PaintRectangle Colour="{Binding Colour}" />
-            <Label Classes="Centre Brand" Content="{Binding Brand}" />
-            <Label Classes="Centre Name" Content="{Binding Name}" />
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                <Label Classes="Centre Brand" Content="{Binding Brand}" />
+                <Label Classes="Centre Name" Content="{Binding Name}" />
+            </StackPanel>
       </StackPanel>
     </Border>
 </UserControl>

@@ -10,7 +10,8 @@ public partial class MainWindowViewModel : ViewModelBase
     private List<Paint> _paints = [
         new Paint("Whimsical White", "Eris", Colors.White),
         new Paint("Bulbous Blue", "Eris", Colors.Blue),
-        new Paint("Silly Salamander", "Eris", Colors.LightPink)
+        new Paint("Silly Salamander", "Eris", Colors.LightPink),
+        new Paint("Goose Gray", "Eris", Colors.Gray)
     ];
 
     public IEnumerable<PaintViewModel> Paints => _paints.Select(p => new PaintViewModel(p));
