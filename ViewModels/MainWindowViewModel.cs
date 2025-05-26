@@ -10,8 +10,23 @@ namespace Paints.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-    private ListPageViewModel _listPageViewModel = new ListPageViewModel();
+    private enum Page
+    {
+        List,
+        Info
+    }
 
-    
-    public ViewModelBase CurrentPage => _listPageViewModel;
+    private Page _currentPage = Page.List;
+    private ListPageViewModel _listPageViewModel = new ListPageViewModel();
+    private InfoPageViewModel _infoPageViewModel = new InfoPageViewModel();
+
+    public ViewModelBase CurrentPage
+    {
+        get
+        {
+            if (_currentPage == Page.List)
+                return _listPageViewModel;
+            return _infoPageViewModel;
+        }
+    }
 }
