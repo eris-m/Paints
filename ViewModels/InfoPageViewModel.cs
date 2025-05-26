@@ -7,7 +7,7 @@ namespace Paints.ViewModels;
 public partial class InfoPageViewModel : ViewModelBase
 {
     [ObservableProperty]
-    private Paint _paint = new();
+    private PaintViewModel _paint;
     
     public ICommand? ToListCommand { get; set; }
 }

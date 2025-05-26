@@ -18,14 +18,14 @@ public class ListPageViewModel : ViewModelBase
 
     public IEnumerable<PaintViewModel> Paints => _paints.Select(PaintViewModelFactory);
     
-    public IRelayCommand<Paint>? SelectPaintCommand { get; set; }
+    public IRelayCommand<PaintViewModel>? SelectPaintCommand { get; set; }
 
     private PaintViewModel PaintViewModelFactory(Paint paint)
     {
         var viewModel = new PaintViewModel(paint);
         viewModel.SelectCommand = new RelayCommand(() =>
         {
-             SelectPaintCommand?.Execute(viewModel.Paint);
+             SelectPaintCommand?.Execute(viewModel);
         });
 
         return viewModel;

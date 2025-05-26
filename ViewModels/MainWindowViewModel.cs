@@ -23,7 +23,7 @@ public partial class MainWindowViewModel : ViewModelBase
     public MainWindowViewModel()
     {
         _listPageViewModel.SelectPaintCommand =
-            new RelayCommand<Paint>(SelectPaint, _ => _currentPage == Page.List);
+            new RelayCommand<PaintViewModel>(SelectPaint, _ => _currentPage == Page.List);
 
         _infoPageViewModel.ToListCommand = new RelayCommand(ToList);
     }
@@ -38,9 +38,9 @@ public partial class MainWindowViewModel : ViewModelBase
         }
     }
     
-    private void SelectPaint(Paint? paint)
+    private void SelectPaint(PaintViewModel? paint)
     {
-        _infoPageViewModel.Paint = paint ?? new Paint();
+        _infoPageViewModel.Paint = paint ?? new PaintViewModel();
         
         _currentPage = Page.Info;
         OnPropertyChanged(nameof(CurrentPage));
