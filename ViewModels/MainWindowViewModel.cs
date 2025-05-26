@@ -20,6 +20,14 @@ public partial class MainWindowViewModel : ViewModelBase
     private ListPageViewModel _listPageViewModel = new ListPageViewModel();
     private InfoPageViewModel _infoPageViewModel = new InfoPageViewModel();
 
+    public MainWindowViewModel()
+    {
+        _listPageViewModel.SelectPaintCommand =
+            new RelayCommand<Paint>(SelectPaint, _ => _currentPage == Page.List);
+
+        _infoPageViewModel.ToListCommand = new RelayCommand(ToList);
+    }
+    
     public ViewModelBase CurrentPage
     {
         get
@@ -28,5 +36,19 @@ public partial class MainWindowViewModel : ViewModelBase
                 return _listPageViewModel;
             return _infoPageViewModel;
         }
+    }
+    
+    private void SelectPaint(Paint? paint)
+    {
+        _infoPageViewModel.Paint = paint ?? new Paint();
+        
+        _currentPage = Page.Info;
+        OnPropertyChanged(nameof(CurrentPage));
+    }
+
+    private void ToList()
+    {
+        _currentPage = Page.List;
+        OnPropertyChanged(nameof(CurrentPage));
     }
 }
