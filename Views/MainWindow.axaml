@@ -15,12 +15,8 @@
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel/>
     </Design.DataContext>
-    
-    <ItemsControl ItemsSource="{Binding Paints}">
-        <ItemsControl.ItemsPanel>
-            <ItemsPanelTemplate>
-                <UniformGrid Columns="3"></UniformGrid>
-            </ItemsPanelTemplate>
-        </ItemsControl.ItemsPanel>
-    </ItemsControl>
+   
+    <ContentControl Content="{Binding CurrentPage}"/>
+    <!-- <TransitioningContentControl></TransitioningContentControl> -->
+    <!-- <cc:ListPageView /> -->
 </Window>
