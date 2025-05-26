@@ -8,8 +8,6 @@ namespace Paints.ViewModels;
 
 public class PaintViewModel(Paint paint) : ViewModelBase
 {
-    public readonly static FuncValueConverter<Color, IBrush> ColourConverter = new(c => new SolidColorBrush(c));
-
     private Paint _paint = paint;
 
     public PaintViewModel() : this(new Paint())

@@ -11,5 +11,10 @@
   
     <Application.Styles>
         <FluentTheme />
+        <StyleInclude Source="Views/PaintRectangle.axaml" />
     </Application.Styles>
+    
+    <!-- <Application.Resources> -->
+    <!--     <ResourceInclude Source="Views/PaintRectangle.axaml" /> -->
+    <!-- </Application.Resources> -->
 </Application>

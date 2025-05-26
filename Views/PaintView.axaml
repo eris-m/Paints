@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:Paints.ViewModels"
+             xmlns:cc="clr-namespace:Paints.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Paints.Views.PaintView"
              x:DataType="vm:PaintViewModel">
@@ -24,8 +25,7 @@
     </UserControl.Styles>
     <Border>
         <StackPanel>
-            <Rectangle Classes="Colour"
-                       Fill="{Binding Colour, Converter={x:Static vm:PaintViewModel.ColourConverter}}" />
+            <cc:PaintRectangle Colour="{Binding Colour}" />
             <Label Classes="Centre Brand" Content="{Binding Brand}" />
             <Label Classes="Centre Name" Content="{Binding Name}" />
       </StackPanel>
