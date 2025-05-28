@@ -13,6 +13,7 @@
             <cc:PaintRectangle HorizontalAlignment="Left" Colour="{Binding Paint.Colour}"/>
             <TextBlock>Name: <Run Text="{Binding Paint.Name}"/></TextBlock>
             <TextBlock>Brand: <Run Text="{Binding Paint.Brand}"/></TextBlock>
+            <TextBlock>In stock: <Run Text="{Binding InStock}"/></TextBlock>
         </StackPanel>
     </DockPanel>
     
