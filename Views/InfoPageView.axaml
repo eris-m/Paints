@@ -11,8 +11,8 @@
         <Button DockPanel.Dock="Top" Command="{Binding ToListCommand}">Back!</Button>
         <StackPanel>
             <cc:PaintRectangle HorizontalAlignment="Left" Colour="{Binding Paint.Colour}"/>
-            <TextBlock>Name: <Label Content="{Binding Paint.Name}"/></TextBlock>
-            <TextBlock>Brand: <Label Content="{Binding Paint.Brand}"/></TextBlock>
+            <TextBlock>Name: <Run Text="{Binding Paint.Name}"/></TextBlock>
+            <TextBlock>Brand: <Run Text="{Binding Paint.Brand}"/></TextBlock>
         </StackPanel>
     </DockPanel>
     
