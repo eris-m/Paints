@@ -17,7 +17,7 @@ public partial class MainWindowViewModel : ViewModelBase
     }
 
     private Page _currentPage = Page.List;
-    private Dictionary<string, PaintStock> _paints = []; 
+    private PaintList _paints = []; 
     
     // pages
     private ListPageViewModel _listPageViewModel;

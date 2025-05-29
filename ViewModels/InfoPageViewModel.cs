@@ -9,12 +9,12 @@ using Paints.Views;
 
 namespace Paints.ViewModels;
 
-public partial class InfoPageViewModel(PaintViewModel? paint, Dictionary<string, PaintStock> paintStocks) : ViewModelBase
+public partial class InfoPageViewModel(PaintViewModel? paint, PaintList paintStocks) : ViewModelBase
 {
     [ObservableProperty]
     private PaintViewModel? _paint = paint;
 
-    private Dictionary<string, PaintStock> _paintStocks = paintStocks;
+    private PaintList _paintStocks = paintStocks;
 
     public uint InStock
     {
