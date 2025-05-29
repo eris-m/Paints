@@ -17,15 +17,28 @@ public partial class MainWindowViewModel : ViewModelBase
     }
 
     private Page _currentPage = Page.List;
-    private ListPageViewModel _listPageViewModel = new ListPageViewModel();
-    private InfoPageViewModel _infoPageViewModel = new InfoPageViewModel();
+    private Dictionary<string, PaintStock> _paints = []; 
+    
+    // pages
+    private ListPageViewModel _listPageViewModel;
+    private InfoPageViewModel _infoPageViewModel;
 
     public MainWindowViewModel()
     {
-        _listPageViewModel.SelectPaintCommand =
-            new RelayCommand<PaintViewModel>(SelectPaint, _ => _currentPage == Page.List);
+        AddPaint(new Paint("Whimsical White", "Eris", Colors.White));
+        AddPaint(new Paint("Bulbous Blue", "Eris", Colors.Blue));
+        AddPaint(new PaintStock(new Paint("Silly Salamander", "Eris", Colors.LightPink), 1));
+        AddPaint(new Paint("Goose Gray", "Eris", Colors.Gray));
 
-        _infoPageViewModel.ToListCommand = new RelayCommand(ToList);
+        _listPageViewModel = new ListPageViewModel(_paints.Values)
+        {
+            SelectPaintCommand = new RelayCommand<PaintViewModel>(SelectPaint, _ => _currentPage == Page.List)
+        };
+
+        _infoPageViewModel = new InfoPageViewModel(null, _paints)
+        {
+            ToListCommand = new RelayCommand(ToList)
+        };
     }
     
     public ViewModelBase CurrentPage
@@ -50,5 +63,15 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         _currentPage = Page.List;
         OnPropertyChanged(nameof(CurrentPage));
+    }
+
+    private void AddPaint(PaintStock paint)
+    {
+        _paints.Add(paint.Paint.Name, paint);
+    }
+
+    private void AddPaint(Paint paint)
+    {
+        _paints.Add(paint.Name, new PaintStock(paint));
     }
 }

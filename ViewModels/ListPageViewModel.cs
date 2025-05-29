@@ -7,21 +7,18 @@ using Paints.Models;
 
 namespace Paints.ViewModels;
 
-public class ListPageViewModel : ViewModelBase
+public class ListPageViewModel(IEnumerable<PaintStock> paints) : ViewModelBase
 {
-    private List<Paint> _paints = [
-        new Paint("Whimsical White", "Eris", Colors.White),
-        new Paint("Bulbous Blue", "Eris", Colors.Blue),
-        new Paint("Silly Salamander", "Eris", Colors.LightPink),
-        new Paint("Goose Gray", "Eris", Colors.Gray)
-    ];
+    private IEnumerable<PaintStock> _paints = paints; 
 
     public IEnumerable<PaintViewModel> Paints => _paints.Select(PaintViewModelFactory);
     
     public IRelayCommand<PaintViewModel>? SelectPaintCommand { get; set; }
 
-    private PaintViewModel PaintViewModelFactory(Paint paint)
+    private PaintViewModel PaintViewModelFactory(PaintStock paintStock)
     {
+        var paint = paintStock.Paint;
+        
         var viewModel = new PaintViewModel(paint);
         viewModel.SelectCommand = new RelayCommand(() =>
         {
