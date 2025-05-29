@@ -28,10 +28,10 @@ public partial class MainWindowViewModel : ViewModelBase
 
     public MainWindowViewModel()
     {
-        AddPaint(new Paint("Whimsical White", "Eris", Colors.White));
-        AddPaint(new Paint("Bulbous Blue", "Eris", Colors.Blue));
-        AddPaint(new PaintStock(new Paint("Silly Salamander", "Eris", Colors.LightPink), 1));
-        AddPaint(new Paint("Goose Gray", "Eris", Colors.Gray));
+        AddPaint(new Paint("Whimsical White", "Eris", new PaintColour(255, 255, 255)));
+        AddPaint(new Paint("Bulbous Blue", "Eris", new PaintColour(0, 0, 255)));
+        AddPaint(new PaintStock(new Paint("Silly Salamander", "Eris", new PaintColour(255, 200, 200)), 1));
+        AddPaint(new Paint("Goose Gray", "Eris", new PaintColour(155, 155, 155)));
 
         _listPageViewModel = new ListPageViewModel(_paints.Values)
         {
