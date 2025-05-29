@@ -32,12 +32,6 @@ public partial class InfoPageViewModel(PaintViewModel? paint, Dictionary<string,
     public ICommand? ToListCommand { get; set; }
 
     [RelayCommand]
-    private void SetStock()
-    {
-        
-    }
-
-    [RelayCommand]
     private async Task ChangeStock()
     {
         var window = new ChangeStockDialogue();
