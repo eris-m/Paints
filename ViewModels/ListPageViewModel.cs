@@ -10,7 +10,15 @@ namespace Paints.ViewModels;
 public class ListPageViewModel(IEnumerable<PaintStock> paints) : ViewModelBase
 {
     private IEnumerable<PaintStock> _paints = paints; 
-
+    
+    public IEnumerable<PaintStock> PaintModels
+    {
+        set
+        {
+            _paints = value; 
+            OnPropertyChanged(nameof(Paints));
+        }
+    }
     public IEnumerable<PaintViewModel> Paints => _paints.Select(PaintViewModelFactory);
     
     public IRelayCommand<PaintViewModel>? SelectPaintCommand { get; set; }

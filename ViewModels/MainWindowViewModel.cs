@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Avalonia.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Extensions.DependencyInjection;
 using Paints.Models;
+using Paints.Services;
 
 namespace Paints.ViewModels;
 
@@ -49,6 +52,32 @@ public partial class MainWindowViewModel : ViewModelBase
                 return _listPageViewModel;
             return _infoPageViewModel;
         }
+    }
+
+    [RelayCommand]
+    private async Task Save()
+    {
+        var fileService = App.Current?.ServiceProvider?.GetService<IFileService>();
+        if (fileService == null)
+            return;
+
+        await fileService.SavePaintList(_paints);
+    }
+
+    [RelayCommand]
+    private async Task Load()
+    {
+        var fileService = App.Current?.ServiceProvider?.GetService<IFileService>();
+        if (fileService == null)
+            return;
+
+        var paints = await fileService.LoadPaintList();
+        if (paints == null)
+            return;
+
+        _paints = paints;
+        _infoPageViewModel.PaintStocks = paints;
+        _listPageViewModel.PaintModels = paints.Values;
     }
     
     private void SelectPaint(PaintViewModel? paint)

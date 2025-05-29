@@ -16,6 +16,11 @@ public partial class InfoPageViewModel(PaintViewModel? paint, PaintList paintSto
 
     private PaintList _paintStocks = paintStocks;
 
+    public PaintList PaintStocks
+    {
+        set { _paintStocks = value; }
+    }
+    
     public uint InStock
     {
         get
