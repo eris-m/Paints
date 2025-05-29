@@ -35,7 +35,7 @@ public class FileService : IFileService
         if (!File.Exists(FilePath))
             return null;
         
-        await using var fileStream = File.Create(FilePath);
+        await using var fileStream = File.Open(FilePath, FileMode.Open);
         var value = await JsonSerializer.DeserializeAsync<PaintList>(fileStream);
 
         return value;
