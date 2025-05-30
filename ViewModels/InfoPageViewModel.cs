@@ -18,7 +18,11 @@ public partial class InfoPageViewModel(PaintViewModel? paint, PaintList paintSto
 
     public PaintList PaintStocks
     {
-        set { _paintStocks = value; }
+        set
+        {
+            _paintStocks = value;
+            OnPropertyChanged(nameof(InStock));
+        }
     }
     
     public uint InStock
@@ -28,7 +32,7 @@ public partial class InfoPageViewModel(PaintViewModel? paint, PaintList paintSto
             if (Paint == null)
                 return 0;
             
-            if (!paintStocks.TryGetValue(Paint.Name, out var value))
+            if (!_paintStocks.TryGetValue(Paint.Name, out var value))
                 return 0;
             return value.Stock;
         }
