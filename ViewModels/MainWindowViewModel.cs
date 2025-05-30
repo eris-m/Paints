@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Avalonia.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Extensions.DependencyInjection;
 using Paints.Models;
+using Paints.Services;
 
 namespace Paints.ViewModels;
 
@@ -17,7 +20,7 @@ public partial class MainWindowViewModel : ViewModelBase
     }
 
     private Page _currentPage = Page.List;
-    private Dictionary<string, PaintStock> _paints = []; 
+    private PaintList _paints = []; 
     
     // pages
     private ListPageViewModel _listPageViewModel;
@@ -25,10 +28,10 @@ public partial class MainWindowViewModel : ViewModelBase
 
     public MainWindowViewModel()
     {
-        AddPaint(new Paint("Whimsical White", "Eris", Colors.White));
-        AddPaint(new Paint("Bulbous Blue", "Eris", Colors.Blue));
-        AddPaint(new PaintStock(new Paint("Silly Salamander", "Eris", Colors.LightPink), 1));
-        AddPaint(new Paint("Goose Gray", "Eris", Colors.Gray));
+        AddPaint(new Paint("Whimsical White", "Eris", new PaintColour(255, 255, 255)));
+        AddPaint(new Paint("Bulbous Blue", "Eris", new PaintColour(0, 0, 255)));
+        AddPaint(new PaintStock(new Paint("Silly Salamander", "Eris", new PaintColour(255, 200, 200)), 1));
+        AddPaint(new Paint("Goose Gray", "Eris", new PaintColour(155, 155, 155)));
 
         _listPageViewModel = new ListPageViewModel(_paints.Values)
         {
@@ -49,6 +52,32 @@ public partial class MainWindowViewModel : ViewModelBase
                 return _listPageViewModel;
             return _infoPageViewModel;
         }
+    }
+
+    [RelayCommand]
+    private async Task Save()
+    {
+        var fileService = App.Current?.ServiceProvider?.GetService<IFileService>();
+        if (fileService == null)
+            return;
+
+        await fileService.SavePaintList(_paints);
+    }
+
+    [RelayCommand]
+    private async Task Load()
+    {
+        var fileService = App.Current?.ServiceProvider?.GetService<IFileService>();
+        if (fileService == null)
+            return;
+
+        var paints = await fileService.LoadPaintList();
+        if (paints == null)
+            return;
+
+        _paints = paints;
+        _infoPageViewModel.PaintStocks = paints;
+        _listPageViewModel.PaintModels = paints.Values;
     }
     
     private void SelectPaint(PaintViewModel? paint)

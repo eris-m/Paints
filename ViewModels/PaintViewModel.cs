@@ -43,7 +43,22 @@ public class PaintViewModel(Paint paint) : ViewModelBase
 
     public Color Colour
     {
-        get => Paint.Colour;
-        set => SetProperty(Paint.Colour, value, Paint, (m, v) => m.Colour = value);
-    }        
+        get => ConvertColour(Paint.Colour);
+        set => SetProperty(
+            ConvertColour(Paint.Colour), 
+            value, 
+            Paint, 
+            (m, v) => m.Colour = ConvertColour(value)
+        );
+    }
+
+    private static Color ConvertColour(PaintColour colour)
+    {
+        return new Color(colour.A, colour.R, colour.G, colour.B);
+    }
+
+    private static PaintColour ConvertColour(Color colour)
+    {
+        return new PaintColour(colour.R, colour.G, colour.B, colour.A);
+    }
 }

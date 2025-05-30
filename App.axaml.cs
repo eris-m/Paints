@@ -1,3 +1,5 @@
+using System;
+using System.ComponentModel.Design;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core;
@@ -5,6 +7,7 @@ using Avalonia.Data.Core.Plugins;
 using System.Linq;
 using Avalonia.Markup.Xaml;
 using Microsoft.Extensions.DependencyInjection;
+using Paints.Services;
 using Paints.ViewModels;
 using Paints.Views;
 
@@ -12,6 +15,10 @@ namespace Paints;
 
 public partial class App : Application
 {
+    public new static App? Current => (App?)Application.Current;
+
+    public IServiceProvider? ServiceProvider { get; private set; }
+    
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
@@ -19,6 +26,10 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
+        var serviceContainer = new ServiceContainer();
+        serviceContainer.AddService(typeof(IFileService), new FileService());
+        ServiceProvider = serviceContainer;
+        
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
@@ -29,7 +40,7 @@ public partial class App : Application
                 DataContext = new MainWindowViewModel(),
             };
         }
-
+        
         base.OnFrameworkInitializationCompleted();
     }
 

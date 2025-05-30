@@ -9,13 +9,22 @@ using Paints.Views;
 
 namespace Paints.ViewModels;
 
-public partial class InfoPageViewModel(PaintViewModel? paint, Dictionary<string, PaintStock> paintStocks) : ViewModelBase
+public partial class InfoPageViewModel(PaintViewModel? paint, PaintList paintStocks) : ViewModelBase
 {
     [ObservableProperty]
     private PaintViewModel? _paint = paint;
 
-    private Dictionary<string, PaintStock> _paintStocks = paintStocks;
+    private PaintList _paintStocks = paintStocks;
 
+    public PaintList PaintStocks
+    {
+        set
+        {
+            _paintStocks = value;
+            OnPropertyChanged(nameof(InStock));
+        }
+    }
+    
     public uint InStock
     {
         get
@@ -23,7 +32,7 @@ public partial class InfoPageViewModel(PaintViewModel? paint, Dictionary<string,
             if (Paint == null)
                 return 0;
             
-            if (!paintStocks.TryGetValue(Paint.Name, out var value))
+            if (!_paintStocks.TryGetValue(Paint.Name, out var value))
                 return 0;
             return value.Stock;
         }

@@ -16,7 +16,13 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
    
-    <ContentControl Content="{Binding CurrentPage}"/>
-    <!-- <TransitioningContentControl></TransitioningContentControl> -->
-    <!-- <cc:ListPageView /> -->
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="Save" Command="{Binding SaveCommand}"/>
+                <MenuItem Header="Load" Command="{Binding LoadCommand}"/>
+            </MenuItem>
+        </Menu>
+        <ContentControl Content="{Binding CurrentPage}"/>
+    </DockPanel>
 </Window>
