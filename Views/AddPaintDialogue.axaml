@@ -2,23 +2,32 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="200"
+        Width="500" Height="200"
         x:Class="Paints.Views.AddPaintDialogue"
         Title="Add paint - paints">
+    <Window.Styles>
+        <Style Selector="Label.DialogueItem">
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style Selector="TextBox.DialogueItem">
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </Window.Styles>
     <DockPanel>
         <Grid DockPanel.Dock="Bottom" ColumnDefinitions="*,*">
             <Button HorizontalAlignment="Stretch" Grid.Column="0" IsCancel="True" Click="Cancel_Clicked">Cancel</Button>
             <Button HorizontalAlignment="Stretch" Grid.Column="1" IsDefault="True" Click="Enter_Clicked">Accept</Button>
         </Grid>
         <Grid ColumnDefinitions="*,*" RowDefinitions="*, *,*">
-            <Label Grid.Row="0" Grid.Column="0">Colour: </Label>
-            <ColorPicker Grid.Row="0" Grid.Column="1" Name="Picker" />
+            <Label Classes="DialogueItem" Grid.Row="0" Grid.Column="0">Colour: </Label>
+            <ColorPicker Classes="DialogueItem"  Grid.Row="0" Grid.Column="1" Name="Picker" />
             
-            <Label Grid.Row="1" Grid.Column="0">Name: </Label>
-            <TextBox Grid.Row="1" Grid.Column="1" Name="NameBox" />
+            <Label Classes="DialogueItem" Grid.Row="1" Grid.Column="0">Name: </Label>
+            <TextBox Classes="DialogueItem" Grid.Row="1" Grid.Column="1" Name="NameBox" />
             
-            <Label Grid.Row="2" Grid.Column="0">Brand: </Label>
-            <TextBox Grid.Row="2" Grid.Column="1" Name="BrandBox" />
+            <Label Classes="DialogueItem" Grid.Row="2" Grid.Column="0">Brand: </Label>
+            <TextBox Classes="DialogueItem" Grid.Row="2" Grid.Column="1" Name="BrandBox" />
         </Grid>
     </DockPanel>
 </Window>
