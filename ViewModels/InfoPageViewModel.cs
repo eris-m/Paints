@@ -5,6 +5,8 @@ using Avalonia.Controls.ApplicationLifetimes;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Paints.Models;
+using Paints.Services;
+using Microsoft.Extensions.DependencyInjection;
 using Paints.Views;
 
 namespace Paints.ViewModels;
@@ -43,18 +45,11 @@ public partial class InfoPageViewModel(PaintViewModel? paint, PaintList paintSto
     [RelayCommand]
     private async Task ChangeStock()
     {
-        var window = new ChangeStockDialogue();
-
-        var app = App.Current;
-        if (app == null)
+        var dialogueService = App.Current?.ServiceProvider?.GetService<IDialogueService>();
+        if (dialogueService == null)
             return;
 
-        if (app.ApplicationLifetime is not IClassicDesktopStyleApplicationLifetime desktop)
-        {
-            return;
-        }
-
-        var newStock = await window.ShowDialog<uint?>(desktop.MainWindow!);
+        var newStock = await dialogueService.ChangeStock();
         if (newStock == null)
             return;
         

@@ -27,8 +27,10 @@ public partial class App : Application
     public override void OnFrameworkInitializationCompleted()
     {
         var serviceContainer = new ServiceContainer();
-        serviceContainer.AddService(typeof(IFileService), new FileService());
         ServiceProvider = serviceContainer;
+        
+        serviceContainer.AddService(typeof(IFileService), new FileService());
+        serviceContainer.AddService(typeof(IDialogueService), new DialogueService());
         
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
