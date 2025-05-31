@@ -55,6 +55,21 @@ public partial class MainWindowViewModel : ViewModelBase
     }
 
     [RelayCommand]
+    private async Task Add()
+    {
+        var dialogueService = App.Current?.ServiceProvider?.GetService<IDialogueService>();
+        if (dialogueService == null)
+            return;
+
+        var paint = await dialogueService.CreatePaint();
+        if (paint == null)
+            return;
+
+        _paints.Add(paint.Name, new PaintStock(paint));
+        _listPageViewModel.PaintModels = _paints.Values;
+    }
+
+    [RelayCommand]
     private async Task Save()
     {
         var fileService = App.Current?.ServiceProvider?.GetService<IFileService>();
