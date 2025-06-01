@@ -38,5 +38,17 @@ public class DialogueService : IDialogueService
             return null;
 
         return desktop.MainWindow;
+        
+        var window = new ChangeStockDialogue();
+
+        var app = App.Current;
+
+        if (app?.ApplicationLifetime is not IClassicDesktopStyleApplicationLifetime desktop)
+        {
+            return null;
+        }
+
+        var newStock = await window.ShowDialog<uint?>(desktop.MainWindow!);
+        return newStock;
     }
 }
