@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Paints.Models;
-using Paints.Views;
+using Paints.Dialogues;
 
 namespace Paints.Services;
 

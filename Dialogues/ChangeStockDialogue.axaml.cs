@@ -3,7 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 
-namespace Paints.Views;
+namespace Paints.Dialogues;
 
 public partial class ChangeStockDialogue : Window
 {

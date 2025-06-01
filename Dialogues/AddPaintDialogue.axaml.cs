@@ -4,7 +4,7 @@ using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Paints.Models;
 
-namespace Paints.Views;
+namespace Paints.Dialogues;
 
 public partial class AddPaintDialogue : Window
 {

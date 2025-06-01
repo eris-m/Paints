@@ -3,7 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:Paints.ViewModels"
-        x:Class="Paints.Views.ChangeStockDialogue"
+        x:Class="Paints.Dialogues.ChangeStockDialogue"
         x:DataType="vm:InfoPageViewModel"
         Width="300" Height="100"
         Title="Change stock level - Paints">
