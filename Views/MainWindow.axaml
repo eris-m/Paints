@@ -19,7 +19,7 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="File">
-                <MenuItem Header="Add" Command="{Binding AddCommand}" />
+                <MenuItem Header="New Paint..." Command="{Binding AddCommand}" />
                 <MenuItem Header="Save" Command="{Binding SaveCommand}"/>
                 <MenuItem Header="Load" Command="{Binding LoadCommand}"/>
             </MenuItem>
