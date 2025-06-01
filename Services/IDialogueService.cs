@@ -10,6 +10,8 @@ public interface IDialogueService
 {
     public Task<uint?> ChangeStock();
     public Task<Paint?> CreatePaint();
+    public Task About();
+    public Task Copyright();
 }
 
 public class DialogueService : IDialogueService
@@ -28,6 +30,18 @@ public class DialogueService : IDialogueService
 
         var newPaint = await window.ShowDialog<Paint?>(MainWindow()!);
         return newPaint;
+    }
+
+    public async Task About()
+    {
+        var window = new AboutDialogue();
+        await window.ShowDialog(MainWindow()!);
+    }
+
+    public async Task Copyright()
+    {
+        var window = new CopyrightDialogue();
+        await window.ShowDialog(MainWindow()!);
     }
 
     private Window? MainWindow()

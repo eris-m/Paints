@@ -94,11 +94,31 @@ public partial class MainWindowViewModel : ViewModelBase
         _infoPageViewModel.PaintStocks = paints;
         _listPageViewModel.PaintModels = paints.Values;
     }
-    
+
+    [RelayCommand]
+    private async Task About()
+    {
+        var dialogueService = App.Current?.ServiceProvider?.GetService<IDialogueService>();
+        if (dialogueService == null)
+            return;
+
+        await dialogueService.About();
+    }
+
+    [RelayCommand]
+    private async Task Copyright()
+    {
+        var dialogueService = App.Current?.ServiceProvider?.GetService<IDialogueService>();
+        if (dialogueService == null)
+            return;
+
+        await dialogueService.Copyright();
+    }
+
     private void SelectPaint(PaintViewModel? paint)
     {
         _infoPageViewModel.Paint = paint ?? new PaintViewModel();
-        
+
         _currentPage = Page.Info;
         OnPropertyChanged(nameof(CurrentPage));
     }

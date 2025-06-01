@@ -23,6 +23,10 @@
                 <MenuItem Header="Save" Command="{Binding SaveCommand}"/>
                 <MenuItem Header="Load" Command="{Binding LoadCommand}"/>
             </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="About" Command="{Binding AboutCommand}"/>
+                <MenuItem Header="Copyright" Command="{Binding CopyrightCommand}" />
+            </MenuItem>
         </Menu>
         <ContentControl Content="{Binding CurrentPage}"/>
     </DockPanel>
